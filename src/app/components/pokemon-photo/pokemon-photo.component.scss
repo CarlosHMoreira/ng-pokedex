@@ -1,0 +1,38 @@
+
+.container {
+  margin: 0 auto;
+  perspective: 1000;
+  background-color: #FFF;
+  border: 2px solid rgb(48, 48, 48);
+  width: 60%;
+  height: 200px
+}
+
+.container.flip .flipper {
+  transform: rotateY(180deg);
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+
+  &__image {
+    width: 100%;
+  }
+}
+
+.front { z-index: 2;  }
+
+.back { transform: rotateY(180deg); }

@@ -73,3 +73,8 @@ export interface PokemonDTO {
   types: Type[];
   weight: number;
 }
+
+export interface PokemonPhotos {
+  front: string;
+  back: string;
+}

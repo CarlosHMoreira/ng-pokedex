@@ -1,0 +1,26 @@
+
+<div class="container" [ngClass]="{'flip' : showBack}">
+
+  <div class="flipper">
+
+    <figure class="front">
+      <img
+      class="front__image"
+        [src]="photos.front"
+        alt="A specimen of {{pokemonName}}"
+        title="A specimen of {{pokemonName}}"
+      />
+    </figure>
+
+    <figure class="back">
+      <img
+        class="back__image"
+        [src]="photos.back"
+        alt="A specimen of {{pokemonName}}"
+        title="A specimen of {{pokemonName}}"
+      />
+    </figure>
+
+  </div>
+
+</div>

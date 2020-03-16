@@ -1,1 +1,16 @@
-{{ pokemon | json }}
+<section class="detail">
+
+  <pkx-pokemon-photo
+    [photos]="pokemonPhotos"
+    [showBack]="showPhotoBack"
+    [pokemonName]="pokemon.name">
+  </pkx-pokemon-photo>
+
+  <article>
+    <p><span>name:</span>{{pokemon.name}}</p>
+    <p><span>height:</span>{{pokemon.height}}</p>
+    <p><span>weight:</span>{{pokemon.weight}}</p>
+  </article>
+
+  <button (click)="toggleShowPhotoBack()" >Show photo back</button>
+</section>
