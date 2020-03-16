@@ -1,4 +1,5 @@
 <ul>
-  <pkx-list-item *ngFor="let item of list | async"></pkx-list-item>
-
+  <li *ngFor="let item of list">
+    {{ item.name }}
+  </li>
 </ul>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NameUrlDTO } from 'src/app/models/poke-api.model';
 
 @Component({
   selector: 'pkx-pokemon-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonListComponent implements OnInit {
 
-  constructor() { }
+  public pokemonList: NameUrlDTO[];
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.pokemonList = this.route.snapshot.data.pokemonList.results;
   }
 
 }

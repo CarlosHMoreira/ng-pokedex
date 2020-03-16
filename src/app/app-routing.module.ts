@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PokemonListComponent } from './containers/pokemon-list/pokemon-list.component';
+import { PokemonListResolver } from './resolvers/pokemon-list.resolver.service';
 
 
 const routes: Routes = [
@@ -8,6 +9,7 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: PokemonListComponent,
+    resolve: { pokemonList: PokemonListResolver },
   }
 ];
 
