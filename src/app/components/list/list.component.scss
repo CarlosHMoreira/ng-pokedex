@@ -1,0 +1,28 @@
+.list {
+  list-style-type: none;
+  padding: 5px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  &__item {
+    margin: 5px 0;
+    background-color: #FFF;
+    border: 2px solid rgb(56, 56, 56);
+  }
+
+  &__link {
+    padding: 5px;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(56, 56, 56);
+    transition: transform ease-in-out .2s;
+
+    &:hover, &:active, &:focus {
+      transform: translateY(-4px);
+    }
+  }
+}
