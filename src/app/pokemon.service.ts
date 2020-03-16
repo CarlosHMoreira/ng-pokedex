@@ -16,7 +16,7 @@ export class PokemonService {
     return this.http.get<ListApiResponse>(`${this.uri}pokemon?offset=${offset}&limit=${limit}`);
   }
 
-  find(id: number) {
-    return this.http.get<PokemonDTO>(`${this.uri}pokemon/${id}`);
+  find(identifier: number|string) {
+    return this.http.get<PokemonDTO>(`${this.uri}pokemon/${identifier}`);
   }
 }
