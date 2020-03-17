@@ -1,0 +1,29 @@
+<input
+  class="option"
+  type="radio"
+  id="male"
+  name="gender"
+  value="male"
+  aria-label="male"
+  [(ngModel)]="gender"
+  (change)="emitChangeEvent($event)"
+  >
+<label class="option__label" for="male">
+  <img class="option__image" src="assets/icons/male.png" alt="Male icon">
+</label>
+
+
+<input
+  class="option"
+  type="radio"
+  id="female"
+  name="gender"
+  value="female"
+  aria-label="female"
+  [(ngModel)]="gender"
+  (change)="emitChangeEvent($event)"
+  >
+<label class="option__label" for="female">
+  <img class="option__image" src="assets/icons/female.png" alt="Female icon">
+</label>
+

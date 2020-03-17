@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonDTO, PokemonPhotos } from 'src/app/models/poke-api.model';
+import { Genders } from 'src/app/components/gender-options/gender.enum';
 
 @Component({
   selector: 'pkx-pokemon-detail',
@@ -10,7 +11,7 @@ import { PokemonDTO, PokemonPhotos } from 'src/app/models/poke-api.model';
 export class PokemonDetailComponent implements OnInit {
   pokemon: PokemonDTO;
   showShiny = false;
-  isFemale = false;
+  gender = Genders.male;
   pokemonPhotos: PokemonPhotos;
   showPhotoBack = false;
   constructor(private route: ActivatedRoute) { }
@@ -20,12 +21,44 @@ export class PokemonDetailComponent implements OnInit {
     this.updatePhoto();
   }
 
+  toggleShowPhotoBack() {
+    this.showPhotoBack = !this.showPhotoBack;
+  }
+
+  toogleShiny() {
+    this.showShiny = !this.showShiny;
+    this.updatePhoto();
+  }
+
+  hasShinyPhotoForGenderSelected() {
+    const { sprites: {
+      back_shiny,
+      front_shiny,
+      back_shiny_female,
+      front_shiny_female,
+   } } = this.pokemon;
+
+    if (this.isFemale()) {
+    return [
+      back_shiny_female,
+      front_shiny_female,
+    ].some(photo => !!photo);
+   }
+
+    return [
+      back_shiny,
+      front_shiny,
+    ].some(photo => !!photo);
+  }
+
   updatePhoto() {
+    console.log('update', this.gender, this.showShiny);
+
     this.pokemonPhotos = this.resolvePhoto();
   }
 
-  toggleShowPhotoBack() {
-    this.showPhotoBack = !this.showPhotoBack;
+  private isFemale() {
+    return this.gender === Genders.female;
   }
 
   private resolvePhoto() {
@@ -40,14 +73,14 @@ export class PokemonDetailComponent implements OnInit {
        front_shiny_female,
     } } = this.pokemon;
 
-    if (this.isFemale && this.showShiny) {
+    if (this.isFemale() && this.showShiny) {
       return {
         back: back_shiny_female || back_female ||  back_shiny || back_female,
         front: front_shiny_female || front_female || front_shiny || back_female,
       } as PokemonPhotos;
     }
 
-    if (this.isFemale) {
+    if (this.isFemale()) {
       return {
         back:  back_female || back_default,
         front: front_female || front_default,

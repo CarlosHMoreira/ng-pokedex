@@ -1,0 +1,36 @@
+.option {
+  visibility: hidden;
+  position: absolute;
+  left: -200vw;
+
+  &:checked + &__label {
+    filter: brightness(.8);
+  }
+
+  &__label {
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    padding: 3px;
+    cursor: pointer;
+    background-color: #d6d6d6;
+    border: 2px solid rgb(46, 46, 46);
+    border-radius: 10%;
+
+    &:first-of-type {
+      border-right: 2px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-of-type {
+      border-left: 2px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+}
