@@ -1,5 +1,5 @@
 <ul class="list">
-  <li class="list__item" *ngFor="let item of list">
+  <li class="list__item" *ngFor="let item of list | async">
     <a [routerLink]="['./pokemon', item.name]" class="list__link" >{{ item.name }}</a>
   </li>
 </ul>

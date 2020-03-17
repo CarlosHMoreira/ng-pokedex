@@ -1,1 +1,9 @@
-<pkx-list [list]="pokemonList"></pkx-list>
+<pkx-list [list]="pokemonList$"></pkx-list>
+
+<button class="control-button control-button--previous" (click)="backPage()" aria-label="previous" [disabled]="offset == 0">
+ <span aria-hidden="true"> < </span>
+</button>
+
+<button class="control-button control-button--next" (click)="nextPage()"  aria-label="next">
+    <span aria-hidden="true"> > </span>
+</button>

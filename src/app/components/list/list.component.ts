@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListApiResponse, NameUrlDTO } from '../../models/poke-api.model';
+import { NameUrlDTO } from '../../models/poke-api.model';
 
 @Component({
   selector: 'pkx-list',
@@ -8,7 +8,7 @@ import { ListApiResponse, NameUrlDTO } from '../../models/poke-api.model';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() list: NameUrlDTO[];
+  @Input() list: Observable<NameUrlDTO[]>;
   constructor() { }
 
   ngOnInit(): void {

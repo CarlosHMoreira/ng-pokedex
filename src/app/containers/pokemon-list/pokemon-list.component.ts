@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NameUrlDTO } from 'src/app/models/poke-api.model';
+import { PokemonService } from 'src/app/pokemon.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'pkx-pokemon-list',
@@ -9,12 +11,36 @@ import { NameUrlDTO } from 'src/app/models/poke-api.model';
 })
 export class PokemonListComponent implements OnInit {
 
-  public pokemonList: NameUrlDTO[];
+  public listSubject$ = new BehaviorSubject<NameUrlDTO[]>(null);
+  public pokemonList$ = this.listSubject$.asObservable();
 
-  constructor(private route: ActivatedRoute) { }
+  offset = 0;
+  limit = 20;
+
+  constructor(
+    private route: ActivatedRoute,
+    private pokemonService: PokemonService,
+  ) { }
 
   ngOnInit(): void {
-    this.pokemonList = this.route.snapshot.data.pokemonList.results;
+    const { results } = this.route.snapshot.data.pokemonList;
+    this.listSubject$.next(results);
   }
 
+  backPage() {
+    const result = this.offset - this.limit;
+    this.offset = result < 0 ? 0 : result;
+    this.updateList();
+  }
+
+  nextPage() {
+    this.offset = this.offset + this.limit;
+    this.updateList();
+  }
+
+  private updateList() {
+    this.pokemonService
+      .getAll(this.offset)
+      .subscribe(({ results }) => this.listSubject$.next(results));
+  }
 }
