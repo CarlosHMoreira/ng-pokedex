@@ -3,6 +3,7 @@
   <pkx-pokemon-photo [photos]="pokemonPhotos" [showBack]="showPhotoBack" [pokemonName]="pokemon.name">
   </pkx-pokemon-photo>
 
+  <!-- Could be another component -->
   <div class="options">
 
     <button class="options__button shiny" for="shiny" *ngIf="hasShinyPhotoForGenderSelected()" (click)="toogleShiny()">
@@ -56,6 +57,7 @@
 
     <pkx-gender-options [(gender)]="gender" (genderChange)="updatePhoto()"></pkx-gender-options>
   </div>
+  <!-- end -->
 
   <a [routerLink]="['/']" class="link-to-list">
     <svg class="link-to-list__icon" width="23px" height="21px" viewBox="0 0 23 21" version="1.1"
@@ -83,9 +85,6 @@
     </svg>
   </a>
 
-  <article>
-    <p><span>name:</span>{{pokemon.name}}</p>
-    <p><span>height:</span>{{pokemon.height}}</p>
-    <p><span>weight:</span>{{pokemon.weight}}</p>
-  </article>
+  <pkx-pokemon-info [pokemon]="pokemon" ></pkx-pokemon-info>
+
 </section>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PokemonDTO } from 'src/app/models/poke-api.model';
 
 @Component({
   selector: 'pkx-pokemon-info',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonInfoComponent implements OnInit {
 
+  @Input() pokemon: PokemonDTO;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.pokemon);
+
   }
 
 }

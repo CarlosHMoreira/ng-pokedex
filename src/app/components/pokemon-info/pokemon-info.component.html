@@ -1,1 +1,16 @@
-<p>pokemon-info works!</p>
+<div class="info-wrapper">
+  <article class="info">
+    <p><span class="label">name:</span>{{pokemon.name}}</p>
+    <p><span class="label">height:</span>{{pokemon.height}}</p>
+    <p><span class="label">weight:</span>{{pokemon.weight}}</p>
+  </article>
+
+  <ul class="types">
+      <li
+        *ngFor="let data of pokemon.types"
+        class="types__item"
+      >
+        {{data.type.name}}
+      </li>
+  </ul>
+</div>
