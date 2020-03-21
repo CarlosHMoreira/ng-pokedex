@@ -52,8 +52,6 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   updatePhoto() {
-    console.log('update', this.gender, this.showShiny);
-
     this.pokemonPhotos = this.resolvePhoto();
   }
 
